@@ -1,0 +1,57 @@
+<div id="main" class="text-shadow-white">
+  <noscript>
+    <form id="noscript-upload" action="/upload" enctype="multipart/form-data" method="post">
+      (*JS Disabled) Manual Upload&nbsp;&nbsp;
+      <input id="files" name="files" type="file" multiple onchange="document.getElementById('uploadform').submit();" />
+    </form>
+	</noscript>
+
+  <form action="/upload" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="xhr hidden">
+    <p><input type="file" value="Multi-browse &rarr;" name="files[]" multiple></p>
+    <p><input type="submit" value="Upload"></p>
+    <p><input type="reset" value="Reset"></p>
+  </form>
+</div>
+<script id="status-template" type="text/html" charset="utf-8">
+  <p id="upload-status-text">Upload your photos to Weplay</p>
+  <p id="upload-details">Drag and drop photos from your file system into the window to start uploading.</p>
+  <div id="upload-status-progressbar"></div>
+  <div id="upload-results">
+    <div id="upload-header">
+      <span class="upload-title">Uploads&nbsp;<img id="upload-animation" src="/img/loading.gif" /></span>
+      <span id="upload-count"></span>
+    </div>
+    <div id="upload-placeholder-list"></div>
+    <div id="upload-thumbnail-list"></div>
+  </div>
+</script>
+<script id="overlay-template" type="text/html" charset="utf-8">
+  <div class="table expand-width expand-height">
+    <div class="cell text-center">
+      <h1 class="text-shadow-white">Drop files anywhere to upload...</h1>
+    </div>
+  </div>
+</script>
+<script id="placeholder-template" type="text/html" charset="utf-8">
+  <div class="placeholder-table table">
+    <div class="text-cell">{{medium.uploadStatus()}}</div>
+    <div class="cell progress"></div>
+  </div>
+</script>
+<script id="thumbnail-template" type="text/html" charset="utf-8">
+  <div class="thumbnail-table table">
+    <div class="thumbnail-frame cell">
+      <a href="{{medium.detailURL()}}"><img width="150" src="{{medium.src()}}" alt="{{medium.filename}}"/></a>
+    </div>
+    <div class="text-cell no-text-shadow padding-left">
+      <p>{{medium.get('filename')}}</p>
+      <p>Photo: <a href="{{medium.detailURL()}}">{{medium.detailURL()}}</a></p>
+      <p>Album: <a href="{{medium.albumURL()}}">{{medium.albumDisplayName()}}</a></p>
+    </div>
+  </div>
+</script>
+<script id="upload-group-selector-template" type="text/html" charset="utf-8">
+  <select name='group_id' id='group-id'>
+    <option value="">Personal Gallery</option>
+  </select>
+</script>
