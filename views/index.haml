@@ -1,4 +1,21 @@
 .content
-  .input_area
-  .crop_area
-  .actions_area
+  %ul.input_area
+    %li.local
+      %label.xlate iloader.local_file
+      %input{type: 'file'}
+    %li.remote
+      %label.xlate iloader.remote_url
+      %input{type: 'text'}
+      %span.action_pri.xlate#go iloader.load_url
+  .work_area
+    .dimensions
+    %canvas.init-canvas
+    %canvas.work-canvas
+    .orig-img-host
+    .scaled-img-host
+  %ul.actions_area
+    %li.actions
+      %span.action_pri.xlate#crop iloader.crop
+      %span.action_pri.xlate#reset iloader.reset
+      %span.action_pri.xlate#save iloader.save
+      %span.action_pri.xlate#cancel iloader.cancel
