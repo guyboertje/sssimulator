@@ -1,12 +1,13 @@
 .content
-  %ul.input_area
-    %li.local
-      %label.xlate iloader.local_file
-      %input{type: 'file'}
-    %li.remote
-      %label.xlate iloader.remote_url
-      %input{type: 'text'}
-      %span.action_pri.xlate#go iloader.load_url
+  %form#input_form{action: '#'}
+    %ul.input_area
+      %li.local
+        %label.xlate iloader.local_file
+        %input#input_file{type: 'file'}
+      %li.remote
+        %label.xlate iloader.remote_url
+        %input#input_url{type: 'text'}
+        %span.action_pri.xlate#go iloader.load_url
   .work_area
     .dimensions
     %canvas.init-canvas
