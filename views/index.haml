@@ -10,14 +10,13 @@
         %span.action_pri.xlate#go iloader.load_url
   .work_area
     .dimensions
-    %canvas.init-canvas
-    %canvas.work-canvas
+    .canvasses
+      %canvas.orig-canvas
+      %canvas.work-canvas
     .orig-img-host
-    .scaled-img-host
-  %ul.actions_area
-    %li.actions
-      %span.action_pri.xlate#crop iloader.crop
-      %span.action_pri.xlate#reset iloader.reset
-      %span.action_pri.xlate#save iloader.save
-      %span.action_pri.xlate#ok iloader.ok
-      %span.action_pri.xlate#cancel iloader.cancel
+  .button_area
+    %ul.actions_area
+      %li.actions
+        %span.action_pri.xlate#crop iloader.crop
+        %span.action_pri.xlate#save iloader.save
+        %span.action_pri.xlate#cancel iloader.cancel
