@@ -10,7 +10,14 @@ module Sinatra
       end
 
       def log_request
-        logger.info "params  : #{params.inspect}"
+        logger.info "|| params  : #{params.inspect}"
+      end
+      def log_ai(data)
+        logger.info "|| > #{data.ai}"
+      end
+
+      def log_this(data)
+        logger.info "|| > #{data}"
       end
 
     end

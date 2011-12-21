@@ -1,15 +1,16 @@
 module Sssimulator
 
   class Uploader
-    def initialize(params)
+    def initialize(params, settings)
       @params = params
+      @sinatra_settings = settings
     end
 
     def process
-      filename = @params[:file][:filename]
+      filename = @params[:key].gsub('/', '_')
       tempfile = @params[:file][:tempfile]
-      write_to_file = File.join([settings.root, "storage", @params[:key] + '.' + filename.split('.').last])
-      File.open(filename, 'w') {|f| f.write tempfile.read}
+      write_to_file = File.join(@sinatra_settings.root, "storage", filename)
+      File.open(write_to_file, 'w') {|f| f.write tempfile.read}
       write_to_file
     end
   end

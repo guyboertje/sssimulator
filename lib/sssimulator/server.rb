@@ -34,17 +34,17 @@ module Sssimulator
 
     end
 
-    get '/*/*.*' do |profile,filename,ext|
-      file = File.join(settings.root, "storage", profile+'-'+filename+'.'+ext)
-      send_file(file, :disposition => 'attachment')
+    get '/*/*' do |profile,filename|
+      file = File.join(settings.root, "storage", profile+'_'+filename)
+      send_file(file, :disposition => 'inline')
     end
 
     post "/" do
-      log_request
       content_type :html
-      if request.xhr?
-        image = Uploader.new(params).process
-        puts "Medium upload complete: #{image}"
+      if request.content_type =~ /multipart\/form-data/
+        log_ai request
+        image = Uploader.new(params, settings).process
+        log_this "Medium upload complete: #{image}"
         status 204
       else
         status 301
